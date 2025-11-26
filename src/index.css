@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-burnt-orange: #C05621;
+    --color-amber-glow: #FF8C42;
+    --color-deep-brown: #1A120B;
+    --color-warm-charcoal: #2A1F1A;
+    --color-cream: #F5F5DC;
+    --color-sand: #E8DCC4;
+    --color-gold: #D4AF37;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-deep-brown text-cream font-body antialiased;
+    background: linear-gradient(135deg, #1A120B 0%, #2A1F1A 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(42, 31, 26, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(192, 86, 33, 0.2);
+  }
+
+  /* Glowing border effect */
+  .glow-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(#2A1F1A, #2A1F1A) padding-box,
+      linear-gradient(135deg, #C05621, #FF8C42) border-box;
+  }
+
+  /* Premium button style */
+  .btn-primary {
+    @apply bg-burnt-orange hover:bg-amber-glow text-cream font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+    @apply hover:shadow-lg hover:shadow-burnt-orange/50;
+  }
+
+  /* Vinyl card container */
+  .vinyl-sleeve {
+    @apply relative overflow-hidden rounded-lg;
+    background: linear-gradient(145deg, #2A1F1A, #1A120B);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Vinyl record */
+  .vinyl-record {
+    @apply absolute inset-0 bg-gradient-to-br from-warm-charcoal to-deep-brown rounded-full;
+    background-image:
+      repeating-radial-gradient(circle at center,
+        transparent 0,
+        transparent 2px,
+        rgba(192, 86, 33, 0.1) 2px,
+        rgba(192, 86, 33, 0.1) 4px);
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  /* Animated soundwave */
+  .soundwave {
+    @apply absolute bottom-0 left-1/2 w-full h-32 opacity-20;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(192, 86, 33, 0.3) 50%,
+        transparent 100%);
+    animation: wave 4s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(192, 86, 33, 0.5);
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
