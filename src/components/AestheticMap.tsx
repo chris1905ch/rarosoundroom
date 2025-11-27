@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Navigation } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const AestheticMap = () => {
     const { t } = useLanguage();
-    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=23+av+Norte+Calle+Oriente+Local+7+Santa+Ana+El+Salvador`;
+    // URL que abre Google Maps mostrando solo el pin de ubicación (sin ruta)
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=13.99567,-89.54655`;
+    const embedMapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d919.9564045842978!2d-89.5477128401399!3d13.995575807675607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62e7020f3d8153%3A0x6d97da5f20db36b9!2sPlaza%20Escalon!5e1!3m2!1ses!2ssv!4v1764200148548!5m2!1ses!2ssv";
 
     return (
         <section className="relative py-24 overflow-hidden">
@@ -38,7 +40,7 @@ const AestheticMap = () => {
                     >
                         {/* Styled iframe map */}
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.5!2d-89.56!3d13.99!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDU5JzI0LjAiTiA4OcKwMzMnMzYuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                            src={embedMapUrl}
                             width="100%"
                             height="100%"
                             style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }}
@@ -105,7 +107,7 @@ const AestheticMap = () => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            <Navigation className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
+                            <MapPin className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                             <span>{t.location.directions}</span>
                         </motion.a>
 
